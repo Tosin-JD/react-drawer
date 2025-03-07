@@ -58,7 +58,7 @@ function App() {
             </label>
             <select
               id="position-select"
-              value={drawerPosition}
+              value="{drawerPosition}"
               onChange={handlePositionChange}
               className="p-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 <option value="bottom">Bottom</option>
