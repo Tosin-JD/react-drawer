@@ -32,7 +32,7 @@ function App() {
         <header className="bg-white shadow-md">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-            <button
+            <div
               onClick={toggleTheDrawer}
               className="p-2 m-2 rounded md text-gray-700 hover:bg-gray-200 focus:outline-none"
               >
@@ -47,7 +47,7 @@ function App() {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
-            </button>
+            </div>
             <h1 className="font-bold text-grey-90">Drawer Demo</h1>
           </div>
 
