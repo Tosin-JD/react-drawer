@@ -24,20 +24,16 @@ const Drawer: React.FC<DrawerProps> = ({
     // classes for the positions
     const positionClasses: Record<DrawerPosition, string> = {
         'bottom': 'inset-x-0 bottom-0 flex flex-col pb-20',
-        'top': 'top-0 w-full flex flex-col-reverse',
-        // 'left': 'inset-x-0 w-full left-0 top-0 w-40',
-        // 'right': 'inset-y-0 right-0 translate-x-full',
-        'left': 'inset-y-0 left-0 h-full w-80',                   // Fixed: Vertical, left-aligned, 10rem wide
-        'right': 'inset-y-0 right-0 h-full w-80',
+        'top': 'top-0 left-0 w-full h-full flex flex-col-reverse pb-5',
+        'left': 'inset-y-0 left-0 h-full w-full',
+        'right': 'inset-y-0 right-0 w-full',
     }
-
-    console.log('positionClasses', positionClasses[position])
 
     const transformClasses: Record<DrawerPosition, string> = {
         'bottom': drawerIsOpen? 'translate-y-0': 'translate-y-full',
-        'top': drawerIsOpen? 'translate-y-0': '-top-full',
+        'top': drawerIsOpen? 'translate-y-0': '-translate-y-full',
         'left': drawerIsOpen? 'translate-x-0' : '-translate-x-full',
-        'right': drawerIsOpen? 'translate-x-0' : 'translate-x-full'
+        'right': drawerIsOpen? 'translate-x-0': 'translate-x-full'
     }
 
     const sizeClasses: Record<DrawerPosition, string> = {
@@ -66,25 +62,17 @@ const Drawer: React.FC<DrawerProps> = ({
                 </div>
             )}
 
-            {/* This is the drawer itself */}
-            {/*     
-                    fixed top-0 left-0 w-full transition-all
-                    
-                    ${positionClasses[position]}
-                    ${transformClasses[position]}
-            */}
             <div
                 className={`fixed 
                     ${positionClasses[position]}
                     ${transformClasses[position]}
+                    ${sizeClasses[position]}
                     transition-all
                     transform px-2 mx-2  backdrop-blur-sm
-            border border-gray/20 bg-opacity-75
-                    transform-y-full flex flex-col-reverse
-                    ${sizeClasses[position]}
+                    border border-gray/20 bg-opacity-75                    
                     bg-gray-200 shadow-lg z-30 transition duration-300 ease-in-out
-            bg-gradient-to-b from-white to-gray-200/10
-            shadow-lg rounded-t-xl max-h-80vh`}
+                    bg-gradient-to-b from-white to-gray-200/10
+                    shadow-lg rounded-t-xl max-h-80vh`}
             >
                 <div onClick={onClose} className='p-6'>
                     <div className={`flex ${isVertical ? 'justify-center': 'opacity-0 items-center h-full'}`}>
@@ -96,13 +84,13 @@ const Drawer: React.FC<DrawerProps> = ({
                 <div>
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="text-xl font-semibold text-gray-900 focus:outline-none">{title}</h2>
-                        <button
+                        <div
                             onClick={onClose}
                             className="text-gray-700 hover:text-gray-900 focust:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>    
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                             </svg>
-                        </button>  
+                        </div>  
                     </div> 
                         {/* the children inside the drawer */}
                     <div className="px-4 overflow-y-auto">
